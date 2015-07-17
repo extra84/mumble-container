@@ -90,6 +90,7 @@ with open("/data/mumble-server.ini",'w') as f:
 
 #Set password if new one is provided 
 try:
+    supw=""
     supw = os.environ['SUPW']
 except KeyError:
     pass
