@@ -72,7 +72,7 @@ uname=mumble
 registerName={REGISTER_NAME}
 [Ice]
 Ice.Warn.UnknownProperties=1
-Ice.Meecho ssageSizeMax=65536
+Ice.MessageSizeMax=65536
 
 """
 
