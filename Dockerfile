@@ -11,8 +11,6 @@ COPY init.sh /usr/bin/init.sh
 
 RUN adduser -D -u 1000 murmur && \
     mkdir -p /data /var/lib/murmur  && chown 1000 /data && \
-#    touch /data/murmur.ini && \
-#    chown 1000 /data/murmur.ini && \
     chown 1000 /var/lib/murmur && \
     chmod +x /usr/bin/dumb-init && \
     chmod +r /etc/murmur.tpl
