@@ -1,7 +1,7 @@
 #Mumble
 
-This is a second attempt to create a first class working mumble container.
-
+This is an attempt to create a first class working mumble container.
+This new version is really tiny and based on alpine linux 
 ##How to use : 
 
 `sudo docker run extra/mumble`
