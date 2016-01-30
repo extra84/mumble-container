@@ -1,26 +1,25 @@
-FROM ubuntu:15.04
+FROM alpine:latest
 MAINTAINER Extra <extra84@gmail.com>
 
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && \
-    apt-get install -y mumble-server python
-RUN apt-get install -y supervisor
+RUN apk update && \
+    apk add --no-cache wget 
+RUN wget --no-check-certificate -O /usr/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.0.0/dumb-init_1.0.0_amd64
+RUN adduser -D -u 1000 murmur && \
+    mkdir -p /data /var/lib/murmur  && chown 1000 /data && \
+    touch /data/murmur.ini && \
+    chown 1000 /data/murmur.ini && \
+    chown 1000 /var/lib/murmur && \
+    chmod +x /usr/bin/dumb-init
 
+COPY murmur.x86 /usr/bin/murmur
+COPY murmur.ini /data
+COPY start.py /home/murmur/start.py
+COPY init.sh /usr/bin/init.sh
 
-
-RUN useradd -u 1000 mumble && \
-    mkdir /data && chown 1000 /data && \
-    touch /data/mumble-server.ini && \
-    chown 1000 /data/mumble-server.ini && \
-    chown 1000 /etc/mumble-server.ini && \
-    chown 1000 /var/lib/mumble-server 
-
-COPY start.py /home/mumble/start.py
-COPY supervisord.conf /data/supervisord.conf
 VOLUME ["/data"]
 EXPOSE 64738 64738/udp
 
-USER mumble
+#USER murmur
 
-CMD ["/usr/bin/supervisord","-n", "-c", "/data/supervisord.conf"]
+CMD ["/usr/bin/dumb-init","/usr/bin/init.sh"]
 
