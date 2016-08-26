@@ -11,4 +11,4 @@ if [ ! -e /data/murmur.ini ]; then
 	echo Initilization Completed 
 fi
 
-/usr/bin/murmur -fg -ini /data/murmur.ini
+su murmur -c "/usr/bin/murmur -fg -ini /data/murmur.ini"
