@@ -11,7 +11,6 @@ COPY init.sh /usr/bin/init.sh
 
 RUN adduser -D -u 9000 murmur && \
     mkdir -p /data  && chown murmur.murmur /data && \
-#    chown murmur.murmur /var/lib/murmur && \
     chmod +x /usr/bin/dumb-init && \
     chmod +r /etc/murmur.tpl
 
