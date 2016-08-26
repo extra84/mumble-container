@@ -1,5 +1,7 @@
 #!/bin/sh
+
 if [ ! -e /data/murmur.ini ]; then
+        chown murmur.murmur /data
 	echo Starting Initialization
 	cp /etc/murmur.tpl /data/murmur.ini
 	if [ ! -z "$SERVER_PASSWORD" ] ; then echo 'serverpassword='"$SERVER_PASSWORD" >> /data/murmur.ini ; fi
@@ -11,4 +13,6 @@ if [ ! -e /data/murmur.ini ]; then
 	echo Initilization Completed 
 fi
 
-su murmur -c "/usr/bin/murmur -fg -ini /data/murmur.ini"
+chown -R murmur.murmur /data
+
+su murmur -c "/usr/bin/murmur -fg -ini /data/murmur.ini"  

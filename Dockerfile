@@ -9,12 +9,11 @@ COPY murmur.ini /etc/murmur.tpl
 COPY murmur.x86 /usr/bin/murmur
 COPY init.sh /usr/bin/init.sh
 
-RUN adduser -D -u 1000 murmur && \
-    mkdir -p /data /var/lib/murmur  && chown 1000 /data && \
-    chown 1000 /var/lib/murmur && \
+RUN adduser -D -u 9000 murmur && \
+    mkdir -p /data  && chown murmur.murmur /data && \
+#    chown murmur.murmur /var/lib/murmur && \
     chmod +x /usr/bin/dumb-init && \
-    chmod +r /etc/murmur.tpl && \
-    chmod 777 /data
+    chmod +r /etc/murmur.tpl
 
 VOLUME ["/data"]
 EXPOSE 64738 64738/udp
