@@ -13,7 +13,8 @@ RUN adduser -D -u 1000 murmur && \
     mkdir -p /data /var/lib/murmur  && chown 1000 /data && \
     chown 1000 /var/lib/murmur && \
     chmod +x /usr/bin/dumb-init && \
-    chmod +r /etc/murmur.tpl
+    chmod +r /etc/murmur.tpl && \
+    chmod 777 /data
 
 VOLUME ["/data"]
 EXPOSE 64738 64738/udp
