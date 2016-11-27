@@ -1,7 +1,8 @@
 #Mumble
 
-This is an attempt to create a first class working mumble container.
-This new version is really tiny and based on alpine linux 
+This is the next iteration to create a first class working mumble container.
+This new version is now based on debian jessie slim image.
+
 ##How to use : 
 
 `sudo docker run extra/mumble`

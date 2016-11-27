@@ -14,5 +14,4 @@ if [ ! -e /data/murmur.ini ]; then
 fi
 
 chown -R murmur.murmur /data
-
-su murmur -c "/usr/bin/murmur -fg -ini /data/murmur.ini"  
+exec su -c "/usr/bin/murmur -fg -ini /data/murmur.ini" murmur
